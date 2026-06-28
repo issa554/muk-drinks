@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-surface: #0c0c12;
+  --color-surface-2: #14141e;
+  --color-surface-3: #1e1e2a;
+  --color-gold: #c9955e;
+  --color-gold-light: #e8c49a;
+  --color-gold-soft: rgba(201, 149, 94, 0.12);
+  --color-gold-glow: rgba(201, 149, 94, 0.08);
+  --color-cream: #f0ece4;
+  --color-muted: #7a7a8a;
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-border-hover: rgba(255, 255, 255, 0.1);
+  --font-display: "Fraunces", serif;
+  --font-body: "Manrope", system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(201, 149, 94, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(201, 149, 94, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 90%, rgba(201, 149, 94, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: #000;
+}
+
+@utility scrollbar-thin {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+@utility scrollbar-none {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 78%;
+  min-width: 0;
+}
+
+.embla__slide + .embla__slide {
+  margin-left: 1.25rem;
+}
+
+@media (min-width: 480px) {
+  .embla__slide { flex: 0 0 52%; }
+  .embla__slide + .embla__slide { margin-left: 1.5rem; }
+}
+
+@media (min-width: 640px) {
+  .embla__slide { flex: 0 0 42%; }
+}
+
+@media (min-width: 900px) {
+  .embla__slide { flex: 0 0 30%; }
+  .embla__slide + .embla__slide { margin-left: 1.75rem; }
+}
+
+@media (min-width: 1200px) {
+  .embla__slide { flex: 0 0 23%; }
+  .embla__slide + .embla__slide { margin-left: 2rem; }
+}
+
+@media (min-width: 1600px) {
+  .embla__slide { flex: 0 0 19%; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(201, 149, 94, 0.05); }
+  50% { box-shadow: 0 0 30px rgba(201, 149, 94, 0.12); }
 }
