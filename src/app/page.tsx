@@ -110,21 +110,21 @@ function FlavorModal({ item, onClose }: { item: MenuItem & { flavors: Flavor[] }
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm p-0 sm:p-6"
       onClick={onClose}
     >
+      <button onClick={onClose} className="fixed top-4 right-4 z-[60] w-10 h-10 rounded-full bg-[var(--color-surface-3)]/90 backdrop-blur-sm border border-[var(--color-border)] flex items-center justify-center text-[var(--color-cream)] hover:border-[var(--color-gold-soft)] transition-all shadow-xl">
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+
       <motion.div
         initial={{ y: "100%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: "100%", opacity: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onClick={(e) => e.stopPropagation()}
-        className="relative w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl bg-[var(--color-surface-2)] border border-[var(--color-border)] overflow-hidden"
+        className="relative w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl bg-[var(--color-surface-2)] border border-[var(--color-border)] max-h-[85vh] overflow-y-auto"
       >
         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-[var(--color-border)] sm:hidden" />
-
-        <button onClick={onClose} className="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-[var(--color-surface-3)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-muted)] hover:text-[var(--color-cream)] hover:border-[var(--color-gold-soft)] transition-all shadow-lg">
-          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M18 6 6 18M6 6l12 12" />
-          </svg>
-        </button>
 
         <div className="p-6 pt-8 sm:pt-6">
           <div className="flex items-center gap-4 mb-6">
