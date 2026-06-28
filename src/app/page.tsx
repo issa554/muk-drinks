@@ -120,6 +120,12 @@ function FlavorModal({ item, onClose }: { item: MenuItem & { flavors: Flavor[] }
       >
         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-[var(--color-border)] sm:hidden" />
 
+        <button onClick={onClose} className="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-[var(--color-surface-3)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-muted)] hover:text-[var(--color-cream)] hover:border-[var(--color-gold-soft)] transition-all shadow-lg">
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+
         <div className="p-6 pt-8 sm:pt-6">
           <div className="flex items-center gap-4 mb-6">
             <div className="relative w-16 h-16 flex-shrink-0">
@@ -129,11 +135,6 @@ function FlavorModal({ item, onClose }: { item: MenuItem & { flavors: Flavor[] }
               <h3 className="text-lg font-[family-name:var(--font-display)] font-semibold text-[var(--color-cream)]">{item.name}</h3>
               <span className="text-sm text-[var(--color-muted)] rtl" dir="rtl">{item.arabic}</span>
             </div>
-            <button onClick={onClose} className="ml-auto w-8 h-8 rounded-full bg-[var(--color-surface-3)] flex items-center justify-center text-[var(--color-muted)] hover:text-[var(--color-cream)] transition-colors">
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M18 6 6 18M6 6l12 12" />
-              </svg>
-            </button>
           </div>
 
           <p className="text-xs uppercase tracking-[0.15em] text-[var(--color-muted)] mb-3 font-medium">Choose a flavor</p>
